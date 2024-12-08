@@ -1,1 +1,7 @@
-# MedChain
+In today's digital age, managing health records securely and efficiently is more important than ever. Our Electronic Health Record Management System harnesses the transformative power of blockchain technology and the Interplanetary File System (IPFS) to create a robust platform for managing vaccination histories and other vital health information.
+Imagine having complete control over your health data, with the ability to access, share, and manage your vaccination records at your fingertips. Our system ensures that your information is not only secure but also easily accessible whenever you need it. By utilizing blockchain, we guarantee that your records are tamper-proof and protected from unauthorized access, giving you peace of mind about your personal health information.
+With IPFS, we provide a decentralized storage solution that enhances the efficiency of data retrieval and sharing. This means that your health records are stored in a way that is both secure and resilient, reducing the risk of data loss or breaches. Our platform is designed to empower you, the user, by putting you in charge of your health information and allowing you to share it with healthcare providers as needed.
+Whether you’re a patient wanting to keep track of your vaccination history or a healthcare provider looking for a reliable way to access patient records, our system is tailored to meet your needs. We believe that everyone deserves a secure and efficient way to manage their health data, and our solution is here to make that a reality.# MedChain
+Here's the demo video for the frontend part:
+https://github.com/user-attachments/assets/e8f1f570-0b24-4978-ae4a-0c4e9d4ecbb2
+
