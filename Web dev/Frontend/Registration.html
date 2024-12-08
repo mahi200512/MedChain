@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - MedChain</title>
+    <link rel="stylesheet" href="stylo.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: auto;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: large;
+            list-style: armenian;
+        }
+        body {
+            background-color: #f4f4f4;
+        }
+        .header {
+            position: fixed;
+            -webkit-filter: blur(20px);
+            filter: blur(20px);
+            filter: url(blur.svg#blur);
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 35px 14%;
+            background-color: burlywood;
+            backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: baseline;
+            align-content: center;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 30px;
+            color: darkolivegreen;
+            transition: 0.3s ease-in;
+            font-weight: 800;
+        }
+        .logo:hover {
+            color: darkolivegreen;
+            text-shadow: 0 0 15px beige, 0 0 15px beige;
+            transform: scale(1.1);
+        }
+        span {
+            font-size: 30px;
+            color: black;
+        }
+        .navbar a {
+            color: darkolivegreen;
+            text-align: justify;
+            margin: 0 20px;
+            border-bottom: 3px solid transparent;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            padding: 10px;
+        }
+        .navbar a:hover {
+            text-shadow: 0 0 15px beige, 0 0 15px beige;
+            transform: scale(1.1);
+        }
+        .navbar a:active {
+            color: darkolivegreen;
+            border-bottom: 3px solid darkolivegreen;
+        }
+        .registration-form {
+            max-width: 600px;
+            margin: 100px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .registration-form h2 {
+            text-align: center;
+            color: darkolivegreen;
+        }
+        .inpbox {
+            margin-bottom: 15px;
+        }
+        .inpbox input,
+        .inpbox select,
+        .inpbox textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: darkolivegreen;
+            color: beige;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+        .btn:hover {
+            background-color: beige;
+            color: darkolivegreen;
+        }
+        .btn-back {
+            background-color: #007bff;
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="MedChain.html" class="logo"><i class='bx bxs-shield-plus'></i> Med<span>Chain </span></a>
+        <nav class="navbar">
+            <a href="About.html">About</a>
+            <a href="Login.html">Login</a>
+            <a href="Registration.html">Register</a>
+            <a href="#">Contacts</a>
+        </nav>
+        <a href="#" class="contact">Reviews</a>
+    </header>
+
+    <div class="registration-form">
+        <h2>Register</h2>
+        <form id="regForm">
+            <div class="inpbox">
+                <input type="text" id="name" placeholder="Full Name" required>
+            </div>
+            <div class="inpbox">
+                <input type="number" id="age" placeholder="Age" required>
+            </div>
+            <div class="inpbox">
+                <select id="role" required>
+                    <option value="" disabled selected>Registering as...</option>
+                    <option value="patient">Patient</option>
+                    <option value="doctor">Doctor</option>
+                </select>
+            </div>
+            <div class="inpbox">
+                <input type="password" id="password" placeholder="Create Password" required>
+            </div>
+            <div class="inpbox">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <div class="inpbox">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="inpbox">
+                <input type="text" id="aadharId" placeholder="Aadhar ID" required>
+            </div>
+            <div class="inpbox">
+                <textarea id="address" placeholder="Address" rows="4" required></textarea>
+            </div>
+            <button type="button" class="btn" onclick="register()">Register</button>
+            <button type="button" class="btn btn-back" onclick="goBack()">Back</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+    <footer>
+        <p>Copyright © 2024 MedChain. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Service</a>
+        </p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">
+                <i class='bx bxl-facebook' ></i>
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <i class='bx bxl-twitter' ></i>
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <i class='bx bxl-instagram'></i>
+            </a>
+            <!-- Add more social media links as needed -->
+        </div>
+    </footer>
+
+    <script>
+        function register() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const messageDiv = document.getElementById('message');
+
+            if (password !== confirmPassword) {
+                messageDiv.textContent = "Passwords do not match!";
+                messageDiv.style.color = "red";
+                return;
+            }
+
+            // If all validations pass
+            messageDiv.textContent = "Registered successfully!";
+            messageDiv.style.color = "green";
+            // Here you can add code to send the data to the server if needed
+        }
+
+        function goBack() {
+            window.location.href = "MedChain.html"; // Change this to your home page URL
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+*{
+    margin: auto;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    list-style: armenian;
+}
+.header{
+    position: fixed;
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
+    filter: url(blur.svg#blur);
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 35px 14%;
+    background-color: rgba(121, 85, 72, 0.5);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: baseline;
+    align-content: center;
+    z-index: 100;
+}
+.logo{
+    font-size: 30px;
+    color: darkolivegreen;
+    transition: 0.3s ease-in;
+    font-weight: 800;
+    border: 3;
+}
+.logo:hover{
+    color: darkolivegreen;
+    text-shadow: 0 0 15px beige,
+                 0 0 15px beige;
+    transform:scale(1.1)
+}
+span{
+    font-size: 30px;
+    color:black
+}
+.navbar a{
+    color: darkolivegreen;
+    text-align: justify;
+    margin: 0 20px;
+    border-bottom: 3px solid transparent;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    
+    transition: 0.3s ease;
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 10px;
+}
+.navbar a:hover{
+    text-shadow: 0 0 15px beige,
+                 0 0 15px beige;
+    transform: scale(1.1);
+}
+.navbar a:active{
+    color:darkolivegreen;
+    border-bottom: 3px solid darkolivegreen;;
+}
+.footer {
+  background: rgba(88, 88, 90, 0.5);
+  color: darkolivegreen;
+  text-align:center;
+  padding: 20px 0;
+  position: relative;
+  bottom: 5;
+  width: 100%;
+}
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.footer a:hover {
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+.contact{
+    padding:10px 28px;
+    background-color: rgba(0, 0, 0, 0.619);
+    color:darkolivegreen;
+    border:1px solid darkolivegreen;
+    border-radius: 2px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    transition: 0.3s ease;
+  }
+.contact:hover{
+    background-color: darkolivegreen;
+    box-shadow: 0 0 25px darkolivegreen;
+    color: beige;
+  }
+.home{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    gap:7em;
+    padding: 30px 12% 0;
+  }
+  .home_content{
+    max-width: 800px;
+  }
+  .home_content h3{
+    font-size: 42px;
+  }
+  .home_content h2{
+    font-size: 62px;
+    line-height: 1.2;
+    color: darkolivegreen;
+  }
+.home_content span{
+    font-size: 62px;
+    color:black
+  }
+  .home_content p{
+    font-size: 18px;
+    margin:25px 0 30px;
+  }
+
+  .bb{
+    width: 345px;
+    display: flex;
+    gap: 2em;
+  }
+  .btn1{
+    padding:15px 28px;
+    background-color: darkolivegreen;
+    color:beige;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+  .btn1:hover{
+    background-color: beige;
+    color:darkolivegreen;
+    border: 2px solid darkolivegreen;
+  }
+  .btn2{
+    padding:15px 28px;
+    background-color: darkolivegreen;
+    color:beige;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+  .btn2:hover{
+    background-color: beige;
+    color:black;
+  }
+  .imgbox img{
+    background-blend-mode: beige;
+    box-shadow: 0 0 25pc beige,
+                0 0 25pc beige;
+    border-radius: 50%;
+    width:350px
+  }
+  ::-webkit-scrollbar{
+    width: 15px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: darkolivegreen;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: rgba(0, 0, 0, 0.833);
+    width:50px;
+  }
+  .about{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12% 8%;
+    gap: 10em;
+    background: rgb(163, 203, 203);
+  }
+  .about-img img{
+    position: left;
+    width: 550px;
+    box-shadow: 0 0 25pc burlywood,
+                0 0 25pc burlywood;
+    border-radius: 50px;
+  }
+  .about-content h2{
+    text-align: left;
+    color:whitesmoke;
+    text-rendering: geometricPrecision;
+    font-size: 42px;
+  }
+  .about-content h3{
+    font-size: 62px;
+    color: darkolivegreen;
+  }
+  .about-content p{
+    color: darkolivegreen;
+    font-size: 20px;
+    margin: 2em 0 3em;
+  }
+  .conform h2{
+    text-align: center;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    font-size: 36px;
+  }
+  .conform form{
+    max-width: 50em;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3em;
+  }
+  .conform form.inpbox{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .conform form .inpbox input,
+  .conform form textarea{
+    width:100%;
+    padding: 1.5em;
+    font-size: 18px;
+    color:darkslategray;
+    background-color: whitesmoke;
+    border-radius: .8rem;
+    margin: 1rem 0;
+    resize: none;
+  }
+  .login-form {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+    text-align: center;
+    color: darkolivegreen;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid darkolivegreen; /* Dark olive green border */
+    border-radius: 4px;
+    background-color: whitesmoke; /* Light background for inputs */
+}
+
+.login-form .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: darkolivegreen; /* Button background */
+    color: beige; /* Button text color */
+    border: 2px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.login-form .btn:hover {
+    background-color: beige; /* Button hover background */
+    color: darkolivegreen; /* Button hover text color */
+}
+
+.message {
+    text-align: center;
+    margin-top: 10px;
+    color: red; /* Error message color */
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkolivegreen;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.833);
+}
+.contributor {
+  text-align: center;
+  max-width: 150px; /* Limit the width of each contributor box */
+}
+
+.contributor h3 {
+  font-size: 18px;
+  color: darkolivegreen;
+  margin:  10px 0 5px; /* Margin for spacing */
+}
+
+.contributor p {
+  font-size: 14px;
+  color: #555; /* Darker gray for email */
+}
