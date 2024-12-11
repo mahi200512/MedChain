@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="stylo.css"> <!-- Link to your CSS file -->
+    <style>
+        /* CSS styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 14%;
+            background-color: rgba(121, 85, 72, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 30px;
+            color: darkolivegreen;
+            font-weight: 800;
+            text-decoration: none;
+        }
+        .navbar a {
+            color: darkolivegreen;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+        .navbar a:hover {
+            text-shadow: 0 0 15px beige;
+            transform: scale(1.1);
+        }
+        .dashboard {
+            margin-top: 100px; /* Space for the fixed header */
+            padding: 20px 14%;
+            background-color: #f9f9f9; /* Light background for the dashboard */
+            min-height: calc(100vh - 100px); /* Full height minus header */
+        }
+        .dashboard h1 {
+            text-align: center;
+            color: darkolivegreen;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: darkolivegreen;
+            margin-top: 30px;
+        }
+        #medical-records {
+            margin-bottom: 30px;
+            padding: 10px;
+            background-color: #fff; /* White background for records */
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        form input[type="text"],
+        form input[type="date"],
+        form select,
+        form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid darkolivegreen;
+            border-radius: 4px;
+            background-color: whitesmoke;
+        }
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: darkolivegreen;
+            color: beige;
+            border: 2px solid black;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+        form button:hover {
+            background-color: beige;
+            color: darkolivegreen;
+        }
+        #response-message,
+        #upload-message {
+            text-align: center;
+            margin-top: 10px;
+            color: red; /* Error message color */
+        }
+        /* Scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: darkolivegreen;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar {
+                margin-top: 10px;
+            }
+            .dashboard {
+                padding: 10px;
+            }
+            form {
+                padding: 15px;
+            }
+        }
+    </style>
+</head >
+    <div class="header">
+        <a href="#" class="logo">Vaccination Dashboard</a>
+        <nav class="navbar">
+            <a href="#medical-records">Medical Records</a>
+            <a href="#add-record">Add Record</a>
+        </nav>
+    </div>
+    <div class="dashboard">
+        <h1>User Dashboard</h1>
+        <div id="medical-records">
+            <h2>Vaccination History</h2>
+            <div id="vaccination-history"></div>
+        </div>
+        <div id="add-record">
+            <h2>Add Vaccination Record</h2>
+            <form id="vaccine-form">
+                <label for="vaccine-name">Vaccine Name:</label>
+                <input type="text" id="vaccine-name" required>
+                <label for="date-administered">Date Administered:</label>
+                <input type="date" id="date-administered" required>
+                <label for="modification-date">Modification Date:</label>
+                <input type="date" id="modification-date" required>
+                <label for="media-file">Upload Media File:</label>
+                <input type="file" id="media-file" accept="image/*">
+                <button type="submit">Submit Record</button>
+                <p id="response-message"></p>
+                <button type="button" class="btn btn-back" onclick="goBack()">Back</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Handle form submission
+        document.getElementById('vaccine-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const vaccineName = document.getElementById('vaccine-name').value;
+            const dateAdministered = document.getElementById('date-administered').value;
+            const modificationDate = document.getElementById('modification-date').value;
+            const mediaFile = document.getElementById('media-file').files[0];
+
+            // Set default approval status to "pending"
+            const approvedStatus = "pending";
+
+            // Create a new record object
+            const newRecord = {
+                name: vaccineName,
+                dateAdministered: dateAdministered,
+                modificationDate: modificationDate,
+                mediaFile: mediaFile,
+                approved: approvedStatus
+            };
+
+            // Display the new record in the vaccination history
+            displayVaccinationRecord(newRecord);
+
+            // Clear the form
+            this.reset();
+        });
+
+        // Function to display vaccination records
+        function displayVaccinationRecord(record) {
+            const historyDiv = document.getElementById('vaccination-history');
+            const recordDiv = document.createElement('div');
+            recordDiv.innerHTML = `
+                <p><strong>Vaccine Name:</strong> ${record.name}</p>
+                <p><strong>Date Administered:</strong> ${record.dateAdministered}</p>
+                <p><strong>Modification Date:</strong> ${record.modificationDate}</p>
+                <p><strong>Status:</strong> ${record.approved}</p>
+                <hr>
+            `;
+            historyDiv.appendChild(recordDiv);
+        }
+        function goBack() {
+            window.location.href = "MedChain.html"; 
+        }
+    </script>
+</body>
+</html>

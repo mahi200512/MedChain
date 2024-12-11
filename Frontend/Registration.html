@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - MedChain</title>
+    <link rel="stylesheet" href="stylo.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: auto;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: large;
+            list-style: armenian;
+        }
+        body {
+            background-color: #f4f4f4;
+        }
+        .header {
+            position: fixed;
+            -webkit-filter: blur(20px);
+            filter: blur(20px);
+            filter: url(blur.svg#blur);
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 35px 14%;
+            background-color: burlywood;
+            backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: baseline;
+            align-content: center;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 30px;
+            color: darkolivegreen;
+            transition: 0.3s ease-in;
+            font-weight: 800;
+        }
+        .logo:hover {
+            color: darkolivegreen;
+            text-shadow: 0 0 15px beige, 0 0 15px beige;
+            transform: scale(1.1);
+        }
+        span {
+            font-size: 30px;
+            color: black;
+        }
+        .navbar a {
+            color: darkolivegreen;
+            text-align: justify;
+            margin: 0 20px;
+            border-bottom: 3px solid transparent;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            padding: 10px;
+        }
+        .navbar a:hover {
+            text-shadow: 0 0 15px beige, 0 0 15px beige;
+            transform: scale(1.1);
+        }
+        .navbar a:active {
+            color: darkolivegreen;
+            border-bottom: 3px solid darkolivegreen;
+        }
+        .registration-form {
+            max-width: 600px;
+            margin: 100px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .registration-form h2 {
+            text-align: center;
+            color: darkolivegreen;
+        }
+        .inpbox {
+            margin-bottom: 15px;
+        }
+        .inpbox input,
+        .inpbox select,
+        .inpbox textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: darkolivegreen;
+            color: beige;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+        .btn:hover {
+            background-color: beige;
+            color: darkolivegreen;
+        }
+        .btn-back {
+            background-color: #007bff;
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+        }
+        .footer {
+            background-color: burlywood; /* Match the header background */
+            color: darkolivegreen; /* Text color */
+            padding: 20px 8%; /* Padding for the footer */
+            text-align: center; /* Center align text */
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between; /* Space out sections */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            margin-bottom: 20px; /* Space between content and bottom */
+        }
+        
+        .footer-section {
+            flex: 1; /* Allow sections to grow */
+            min-width: 200px; /* Minimum width for each section */
+            margin: 10px; /* Margin around sections */
+        }
+        
+        .footer-section h3 {
+            font-size: 20px; /* Heading size */
+            color: darkolivegreen; /* Heading color */
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px; /* Text size */
+            color: #555; /* Darker gray for text */
+            text-decoration: none; /* Remove underline from links */
+        }
+        
+        .footer-section a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        
+        .social-media {
+            list-style: none; /* Remove bullet points */
+            padding: 0; /* Remove padding */
+        }
+        
+        .social-media li {
+            display: inline; /* Display links inline */
+            margin: 0 10px; /* Space between links */
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid darkolivegreen; /* Top border */
+            padding-top: 10px; /* Padding for top */
+        }
+        
+        .footer-bottom p {
+            font-size: 12px; /* Smaller text for copyright */
+            color: #555; /* Darker gray for copyright text */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="MedChain.html" class="logo"><i class='bx bxs-shield-plus'></i> Med<span>Chain </span></a>
+        <nav class="navbar">
+            <a href="About.html">About</a>
+            <a href="Login.html">Login</a>
+            <a href="Registration.html">Register</a>
+            <a href="#">Contacts</a>
+        </nav>
+        <a href="#" class="contact">Reviews</a>
+    </header>
+
+    <div class="registration-form">
+        <h2>Register</h2>
+        <form id="regForm">
+            <div class="inpbox">
+                <input type="text" id="name" placeholder="Full Name" required>
+            </div>
+            <div class="inpbox">
+                <input type="number" id="age" placeholder="Age" required>
+            </div>
+            <div class="inpbox">
+                <select id="role" required>
+                    <option value="" disabled selected>Registering as...</option>
+                    <option value="patient">Patient</option>
+                    <option value="doctor">Doctor</option>
+                </select>
+            </div>
+            <div class="inpbox">
+                <input type="password" id="password" placeholder="Create Password" required>
+            </div>
+            <div class="inpbox">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <div class="inpbox">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="inpbox">
+                <input type="text" id="aadharId" placeholder="Aadhar ID" required>
+            </div>
+            <div class="inpbox">
+                <textarea id="address" placeholder="Address" rows="4" required></textarea>
+            </div>
+            <button type="button" class="btn" onclick="register()">Register</button>
+            <button type="button" class="btn btn-back" onclick="goBack()">Back</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+    <script>
+        function register() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const messageDiv = document.getElementById('message');
+
+            if (password !== confirmPassword) {
+                messageDiv.textContent = "Passwords do not match!";
+                messageDiv.style.color = "red";
+                return;
+            }
+
+            // If all validations pass
+            messageDiv.textContent = "Registered successfully!";
+            messageDiv.style.color = "green";
+            // Here you can add code to send the data to the server if needed
+        }
+
+        function goBack() {
+            window.location.href = "MedChain.html"; // Change this to your home page URL
+        }
+    </script>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class='bx bxl-gmail'></i> support@MedChain.com</p>
+                <p><i class='bx bxs-phone'></i> +91 8817244661</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul class="social-media">
+                    <li><a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook'></i>Facebook</a></li>
+                    <li><a href="https://x.com/?lang=en" target="_blank"><i class='bx bxl-twitter' ></i>Twitter</a></li>
+                    <br>
+                    <li><a href="https://www.instagram.com/" target="_blank"><i class='bx bxl-instagram' ></i>Instagram</a></li>
+                    <li><a href="https://in.linkedin.com/" target="_blank"><i class='bx bxl-linkedin' ></i>LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Learn more about our mission and values :) </p>
+                <a href="about.html">Read More</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 MedChain. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="stylo.css"> <!-- Link to your CSS file -->
+    <style>
+        /* CSS styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 14%;
+            background-color: rgba(121, 85, 72, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 30px;
+            color: darkolivegreen;
+            font-weight: 800;
+            text-decoration: none;
+        }
+        .navbar a {
+            color: darkolivegreen;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+        .navbar a:hover {
+            text-shadow: 0 0 15px beige;
+            transform: scale(1.1);
+        }
+        .dashboard {
+            margin-top: 100px; /* Space for the fixed header */
+            padding: 20px 14%;
+            background-color: #f9f9f9; /* Light background for the dashboard */
+            min-height: calc(100vh - 100px); /* Full height minus header */
+        }
+        .dashboard h1 {
+            text-align: center;
+            color: darkolivegreen;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: darkolivegreen;
+            margin-top: 30px;
+        }
+        #patient-list {
+            margin-bottom: 30px;
+            padding: 10px;
+            background-color: #fff; /* White background for records */
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        #vaccination-history {
+            margin-bottom: 30px;
+            padding: 10px;
+            background-color: #fff; /* White background for records */
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        form input[type="text"],
+        form input[type="date"],
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid darkolivegreen;
+            border-radius: 4px;
+            background-color: whitesmoke;
+        }
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: darkolivegreen;
+            color: beige;
+            border: 2px solid black;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+        form button:hover {
+            background-color: beige;
+            color: darkolivegreen;
+        }
+        /* Scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+ ::-webkit-scrollbar-thumb {
+            background-color: darkolivegreen;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar {
+                margin-top: 10px;
+            }
+            .dashboard {
+                padding: 10px;
+            }
+            form {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#" class="logo">Doctor Dashboard</a>
+        <nav class="navbar">
+            <a href="#patient-list">Patient List</a>
+            <a href="#add-vaccination">Add Vaccination</a>
+        </nav>
+    </div>
+    <div class="dashboard">
+        <h1>Doctor Dashboard</h1>
+        <div id="patient-list">
+            <h2>Patients</h2>
+            <div id="patients"></div>
+        </div>
+        <div id="vaccination-history">
+            <h2>Vaccination Records</h2>
+            <div id="records"></div>
+        </div>
+        <div id="add-vaccination">
+            <h2>Add Vaccination Record</h2>
+            <form id="doctor-vaccine-form">
+                <label for="patient-name">Patient Name:</label>
+                <input type="text" id="patient-name" required>
+                <label for="vaccine-name">Vaccine Name:</label>
+                <input type="text" id="vaccine-name" required>
+                <label for="date-administered">Date Administered:</label>
+                <input type="date" id="date-administered" required>
+                <button type="submit">Submit Vaccination Record</button>
+                <button type="button" class="btn btn-back" onclick="goBack()">Back</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Load patients and their vaccination records from local storage
+        function loadPatients() {
+            const patients = JSON.parse(localStorage.getItem('patients')) || [];
+            const patientsDiv = document.getElementById('patients');
+            patientsDiv.innerHTML = '';
+            patients.forEach(patient => {
+                const patientDiv = document.createElement('div');
+                patientDiv.innerHTML = `
+                    <p><strong>${patient.name}</strong></p>
+                    <button onclick="viewRecords('${patient.name}')">View Records</button>
+                    <button onclick="approveRecords('${patient.name}')">Approve Records</button>
+                    <hr>
+                `;
+                patientsDiv.appendChild(patientDiv);
+            });
+        }
+        function goBack() {
+            window.location.href = "MedChain.html"; 
+        }
+
+        // View vaccination records for a specific patient
+        function viewRecords(patientName) {
+            const recordsDiv = document.getElementById('records');
+            recordsDiv.innerHTML = '';
+            const patients = JSON.parse(localStorage.getItem('patients')) || [];
+            const patient = patients.find(p => p.name === patientName);
+            if (patient) {
+                patient.records.forEach(record => {
+                    const recordDiv = document.createElement('div');
+                    recordDiv.innerHTML = `
+                        <p><strong>Vaccine Name:</strong> ${record.name}</p>
+                        <p><strong>Date Administered:</strong> ${record.dateAdministered}</p>
+                        <p><strong>Status:</strong> ${record.approved}</p>
+                        <button onclick="updateRecord('${patientName}', '${record.name}', 'approved')">Approve</button>
+                        <button onclick="updateRecord('${patientName}', '${record.name}', 'disapproved')">Disapprove</button>
+                        <hr>
+                    `;
+                    recordsDiv.appendChild(recordDiv);
+                });
+            }
+        }
+
+        // Update the approval status of a vaccination record
+        function updateRecord(patientName, vaccineName, status) {
+            const patients = JSON.parse(localStorage.getItem('patients')) || [];
+            const patient = patients.find(p => p.name === patientName);
+            if (patient) {
+                const record = patient.records.find(r => r.name === vaccineName);
+                if (record) {
+                    record.approved = status;
+                    localStorage.setItem('patients', JSON.stringify(patients));
+                    loadPatients();
+                    viewRecords(patientName);
+                }
+            }
+        }
+
+        // Handle form submission for adding a vaccination record
+        document.getElementById('doctor-vaccine-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const patientName = document.getElementById('patient-name').value;
+            const vaccineName = document.getElementById('vaccine-name').value;
+            const dateAdministered = document.getElementById('date -administered').value;
+
+            const patients = JSON.parse(localStorage.getItem('patients')) || [];
+            let patient = patients.find(p => p.name === patientName);
+
+            if (!patient) {
+                patient = { name: patientName, records: [] };
+                patients.push(patient);
+            }
+
+            const newRecord = {
+                name: vaccineName,
+                dateAdministered: dateAdministered,
+                approved: "pending"
+            };
+
+            patient.records.push(newRecord);
+            localStorage.setItem('patients', JSON.stringify(patients));
+
+            this.reset();
+            loadPatients();
+        });
+
+        // Initial load of patients
+        loadPatients();
+    </script>
+</body>
+</html>
